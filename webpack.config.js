@@ -6,7 +6,7 @@ export default {
   devtool: 'inline-source-map',
   entry: [
     'eventsource-polyfill',
-    '.public/index'
+    './public/index'
   ],
   target: 'web',
   output: {

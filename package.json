@@ -4,7 +4,8 @@
   "description": "A book store that displays book Inventory",
   "author": "Bayo Mab",
   "scripts": {
-    "start": "babel-node server"
+    "start": "babel-node server",
+    "test": "mocha --reporter spec testSetup.js \"src/**/*.test.js\""
   },
   "dependencies": {
     "babel-polyfill": "^6.22.0",
