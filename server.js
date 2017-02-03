@@ -2,6 +2,7 @@ import express from 'express';
 import webpack from 'webpack';
 import path from 'path';
 import config from './webpack.config';
+import open from 'open';
 
 /* eslint-disable no-console */
 
@@ -16,9 +17,9 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.get('/api/getCourse', function() {
-  console.log('comm with the backend');
-});
+// app.get('/api/loadBook', function() {
+//   console.log('comm with the backend');
+// });
 
 app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, './public/index.html'));
@@ -30,6 +31,6 @@ app.listen(port, function(err) {
   if (err) {
     console.log(err);
   } else {
-  console.log(`app is listening on port ${3000}`)
+    console.log(`App is listening on port ${3000}`)
   }
 });

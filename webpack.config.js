@@ -3,34 +3,37 @@ import path from 'path';
 
 export default {
   debug: true,
+  // devtool: 'cheap-module-eval-source-map',
   devtool: 'inline-source-map',
+  noinfo: false,
   entry: [
     'eventsource-polyfill',
+    'webpack-hot-middleware/client?reload=true',
     './public/index'
   ],
-  target: 'web',
+  target:'web',
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase : path.resolve(__dirname, 'public')
+    contentBase: path.resolve(__dirname, 'public')
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  modules: {
+  module: {
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         include: path.join(__dirname, 'public'),
-        loaders: ['babel']
+        loaders:['babel']
       },
       {
-        test: /\.css$/,
+        test: /(\.css)$/,
         loaders: ['style', 'css']
       },
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
